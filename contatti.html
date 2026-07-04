@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contatti — Nome Cognome</title>
+  <meta name="description" content="Come contattarmi.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+
+  <header class="site-header">
+    <a href="index.html" class="logo">N<span class="accent">.</span></a>
+    <nav class="nav" id="site-nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="contatti.html" class="is-current">Contatti</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false" aria-controls="site-nav">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <main>
+
+    <!-- CONTATTI — unico blocco pieno verde #43795c, come l'originale: mappa + info -->
+    <section class="row-block row-contact" style="padding-top:160px;min-height:90vh;display:flex;align-items:center;">
+      <div class="contact-page-grid">
+
+        <div class="map-placeholder" data-reveal aria-hidden="true">
+          <span>Mappa — Indirizzo placeholder</span>
+        </div>
+
+        <div class="contact-page-info" data-reveal>
+          <p class="contact-eyebrow"><em>Vieni a trovarmi</em></p>
+          <h2>Nome Istituto / Città placeholder</h2>
+          <p class="contact-address">Via Placeholder, 00, 00000 Città (XX)</p>
+          <p class="contact-note">
+            Testo placeholder: dove operi, se sei disponibile a lavoro da remoto,
+            invito a contattarti per info.
+          </p>
+          <p class="contact-note">Mail: tuamail@esempio.com</p>
+
+          <p class="contact-eyebrow" style="margin-top:30px;"><em>Dai un'occhiata ai lavori online</em></p>
+          <p class="contact-links">
+            <a href="#" target="_blank" rel="noopener">Behance</a> — <a href="#" target="_blank" rel="noopener">LinkedIn</a>
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="row-inner">
+      <p>&copy; <span id="year"></span> Nome Cognome.</p>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

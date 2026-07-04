@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio — Nome Cognome</title>
+  <meta name="description" content="Tutti i progetti.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+
+  <header class="site-header">
+    <a href="index.html" class="logo">N<span class="accent">.</span></a>
+    <nav class="nav" id="site-nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="portfolio.html" class="is-current">Portfolio</a>
+      <a href="contatti.html">Contatti</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false" aria-controls="site-nav">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <main>
+
+    <!-- PORTFOLIO — unico blocco pieno edge-to-edge #a83a3a, come l'originale -->
+    <section class="row-portfolio" style="padding-top:140px;">
+
+      <div class="work-filters" data-reveal>
+        <button class="filter-btn is-active" data-filter="all">Tutti</button>
+        <button class="filter-btn" data-filter="cat1">Categoria 1</button>
+        <button class="filter-btn" data-filter="cat2">Categoria 2</button>
+        <button class="filter-btn" data-filter="cat3">Categoria 3</button>
+        <button class="filter-btn" data-filter="cat4">Categoria 4</button>
+      </div>
+
+      <div class="work-grid">
+
+        <article class="work-card" data-category="cat1 cat4" data-reveal>
+          <div class="work-media">
+            <img src="assets/img/project-placeholder-1.jpg" alt="Progetto 1" loading="lazy">
+          </div>
+          <div class="work-body">
+            <div class="work-tags"><span>Categoria 1</span><span>Categoria 4</span></div>
+            <h3>Progetto Uno</h3>
+            <p>Descrizione placeholder: contesto, obiettivo, ruolo svolto.</p>
+          </div>
+        </article>
+
+        <article class="work-card" data-category="cat1" data-reveal>
+          <div class="work-media">
+            <img src="assets/img/project-placeholder-2.jpg" alt="Progetto 2" loading="lazy">
+          </div>
+          <div class="work-body">
+            <div class="work-tags"><span>Categoria 1</span></div>
+            <h3>Progetto Due</h3>
+            <p>Descrizione placeholder: contesto, obiettivo, ruolo svolto.</p>
+          </div>
+        </article>
+
+        <article class="work-card" data-category="cat1 cat2 cat4" data-reveal>
+          <div class="work-media">
+            <img src="assets/img/project-placeholder-3.jpg" alt="Progetto 3" loading="lazy">
+          </div>
+          <div class="work-body">
+            <div class="work-tags"><span>Categoria 1</span><span>Categoria 2</span><span>Categoria 4</span></div>
+            <h3>Progetto Tre</h3>
+            <p>Descrizione placeholder: contesto, obiettivo, ruolo svolto.</p>
+          </div>
+        </article>
+
+        <article class="work-card" data-category="cat1 cat2" data-reveal>
+          <div class="work-media">
+            <img src="assets/img/project-placeholder-4.jpg" alt="Progetto 4" loading="lazy">
+          </div>
+          <div class="work-body">
+            <div class="work-tags"><span>Categoria 1</span><span>Categoria 2</span></div>
+            <h3>Progetto Quattro</h3>
+            <p>Descrizione placeholder: contesto, obiettivo, ruolo svolto.</p>
+          </div>
+        </article>
+
+        <article class="work-card" data-category="cat1 cat4" data-reveal>
+          <div class="work-media">
+            <img src="assets/img/project-placeholder-5.jpg" alt="Progetto 5" loading="lazy">
+          </div>
+          <div class="work-body">
+            <div class="work-tags"><span>Categoria 1</span><span>Categoria 4</span></div>
+            <h3>Progetto Cinque</h3>
+            <p>Descrizione placeholder: contesto, obiettivo, ruolo svolto.</p>
+          </div>
+        </article>
+
+        <article class="work-card" data-category="cat1 cat2 cat4" data-reveal>
+          <div class="work-media">
+            <img src="assets/img/project-placeholder-6.jpg" alt="Progetto 6" loading="lazy">
+          </div>
+          <div class="work-body">
+            <div class="work-tags"><span>Categoria 1</span><span>Categoria 2</span><span>Categoria 4</span></div>
+            <h3>Progetto Sei</h3>
+            <p>Descrizione placeholder: contesto, obiettivo, ruolo svolto.</p>
+          </div>
+        </article>
+
+        <article class="work-card" data-category="cat1 cat2" data-reveal>
+          <div class="work-media">
+            <img src="assets/img/project-placeholder-7.jpg" alt="Progetto 7" loading="lazy">
+          </div>
+          <div class="work-body">
+            <div class="work-tags"><span>Categoria 1</span><span>Categoria 2</span></div>
+            <h3>Progetto Sette</h3>
+            <p>Descrizione placeholder: contesto, obiettivo, ruolo svolto.</p>
+          </div>
+        </article>
+
+        <article class="work-card" data-category="cat1 cat2" data-reveal>
+          <div class="work-media">
+            <img src="assets/img/project-placeholder-8.jpg" alt="Progetto 8" loading="lazy">
+          </div>
+          <div class="work-body">
+            <div class="work-tags"><span>Categoria 1</span><span>Categoria 2</span></div>
+            <h3>Progetto Otto</h3>
+            <p>Descrizione placeholder: contesto, obiettivo, ruolo svolto.</p>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="row-inner">
+      <p>&copy; <span id="year"></span> Nome Cognome.</p>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

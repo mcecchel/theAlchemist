@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nome Cognome — Portfolio</title>
+  <meta name="description" content="Portfolio di Nome Cognome.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+
+  <header class="site-header">
+    <a href="index.html" class="logo">N<span class="accent">.</span></a>
+    <nav class="nav" id="site-nav">
+      <a href="index.html" class="is-current">Home</a>
+      <a href="about.html">About</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="contatti.html">Contatti</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false" aria-controls="site-nav">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <main id="top">
+
+    <!-- COVER PARTICELLE → ROLL 3D → ATTERRA SULLA HERO -->
+    <div class="roll-stage">
+      <div class="roll-sticky">
+
+        <!-- Layer 1: cover particellare, in cima, ruota via -->
+        <div class="roll-cover">
+          <canvas id="particles-canvas" class="particles-canvas"></canvas>
+          <p id="cover-welcome" class="cover-welcome">
+            <span class="cover-line1">welcome to my</span>
+            <span class="cover-line2">playground</span>
+          </p>
+          <div class="hero-scroll" aria-hidden="true">
+            <span></span> scroll
+          </div>
+        </div>
+
+        <!-- Layer 2: hero reale, sotto, rivelata dal roll — particelle ambient proprie -->
+        <section class="hero row-hero-block roll-hero-landing">
+          <canvas id="hero-particles-canvas" class="particles-canvas hero-particles-canvas"></canvas>
+          <div class="hero-inner">
+            <p class="hero-eyebrow" data-reveal>Marianna Cecchelli</p>
+            <h1 data-reveal>Full-Stack developer</h1>
+            <h3 style="margin-top:14px;font-family:var(--ff-head);font-weight:400;" data-reveal>Digital Portfolio</h3>
+          </div>
+        </section>
+
+      </div>
+    </div>
+
+    <!-- SERVIZI — blocco pieno bianco -->
+    <section class="row-block row-light" id="services">
+      <div class="row-inner">
+        <div class="section-head">
+          <h2 data-reveal>Servizi offerti</h2>
+        </div>
+        <div class="row-divider center"></div>
+
+        <p class="services-tools" data-reveal>
+          <span class="services-tools-label">Programmi</span>
+          Strumento 1 — Strumento 2 — Strumento 3 — Strumento 4 — Strumento 5
+        </p>
+
+        <div class="services-grid">
+          <div class="service-block" data-reveal>
+            <div class="icon-circle" aria-hidden="true">01</div>
+            <h3>Servizio Uno</h3>
+            <p>Descrizione breve del servizio: cosa offri, per chi, con quali strumenti. Placeholder.</p>
+          </div>
+          <div class="service-block" data-reveal>
+            <div class="icon-circle" aria-hidden="true">02</div>
+            <h3>Servizio Due</h3>
+            <p>Descrizione breve del servizio: cosa offri, per chi, con quali strumenti. Placeholder.</p>
+          </div>
+          <div class="service-block" data-reveal>
+            <div class="icon-circle" aria-hidden="true">03</div>
+            <h3>Servizio Tre</h3>
+            <p>Descrizione breve del servizio: cosa offri, per chi, con quali strumenti. Placeholder.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PORTFOLIO PREVIEW — blocco pieno bianco -->
+    <section class="row-block row-light">
+      <div class="row-inner">
+        <div class="section-head">
+          <h2 data-reveal>Progetti recenti</h2>
+        </div>
+        <div class="row-divider center"></div>
+
+        <div class="work-grid">
+          <article class="work-card" data-reveal>
+            <div class="work-media">
+              <img src="assets/img/project-placeholder-1.jpg" alt="Anteprima progetto 1" loading="lazy">
+            </div>
+            <div class="work-body">
+              <div class="work-tags"><span>Categoria 1</span></div>
+              <h3>Progetto Uno</h3>
+              <p>Breve descrizione placeholder del progetto.</p>
+            </div>
+          </article>
+          <article class="work-card" data-reveal>
+            <div class="work-media">
+              <img src="assets/img/project-placeholder-2.jpg" alt="Anteprima progetto 2" loading="lazy">
+            </div>
+            <div class="work-body">
+              <div class="work-tags"><span>Categoria 2</span></div>
+              <h3>Progetto Due</h3>
+              <p>Breve descrizione placeholder del progetto.</p>
+            </div>
+          </article>
+          <article class="work-card" data-reveal>
+            <div class="work-media">
+              <img src="assets/img/project-placeholder-3.jpg" alt="Anteprima progetto 3" loading="lazy">
+            </div>
+            <div class="work-body">
+              <div class="work-tags"><span>Categoria 3</span></div>
+              <h3>Progetto Tre</h3>
+              <p>Breve descrizione placeholder del progetto.</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="work-more" data-reveal>
+          <a href="portfolio.html" class="btn btn-ghost">Vedi tutti i progetti →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA CONTATTI — blocco pieno bianco -->
+    <section class="row-block row-light">
+      <div class="row-inner contact-cta-inner">
+        <p style="font-style:italic;opacity:.8;margin-bottom:8px;" data-reveal><em>Cerchi un professionista?</em></p>
+        <h2 style="font-family:var(--ff-head);font-size:clamp(1.6rem,4vw,2.4rem);" data-reveal>Contattami</h2>
+        <div class="row-divider center" style="max-width:1180px;"></div>
+
+        <div class="contact-cta-grid" data-reveal>
+          <div>
+            <div class="icon-circle" aria-hidden="true">@</div>
+            <h3>Email</h3>
+            <a href="mailto:tuamail@esempio.com">tuamail@esempio.com</a>
+          </div>
+          <div>
+            <div class="icon-circle" aria-hidden="true">in</div>
+            <h3>LinkedIn</h3>
+            <a href="#" target="_blank" rel="noopener">Nome Cognome</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="row-inner">
+      <div class="row-divider" style="opacity:.15;"></div>
+      <p>Breve disclaimer placeholder: cosa raccoglie questo sito, eventuali note su aggiornamenti in corso.</p>
+      <p style="margin-top:10px;">&copy; <span id="year"></span> Nome Cognome.</p>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
