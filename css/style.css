@@ -342,23 +342,50 @@ ul { list-style: none; }
   color: inherit;
 }
 
+/* ---------- Servizi: collage graffito (2 schede, leggermente ruotate) ---------- */
 .services-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 50px;
-  text-align: center;
-  max-width: 1180px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 46px 40px;
+  text-align: left;
+  max-width: 900px;
   margin: 0 auto;
 }
-@media (max-width: 800px) {
-  .services-grid { grid-template-columns: 1fr; gap: 60px; }
+.service-block {
+  flex: 1 1 320px;
+  max-width: 400px;
+  background: rgba(242, 241, 248, .04);
+  border: 1px solid rgba(242, 241, 248, .14);
+  padding: 30px 28px 26px;
+  transition: transform .25s ease;
 }
+.service-block:nth-child(1) { transform: rotate(-1.6deg); }
+.service-block:nth-child(2) { transform: rotate(1.4deg); margin-top: 22px; }
+.service-block:hover { transform: rotate(0deg) translateY(-3px); }
+.service-tag {
+  display: inline-block;
+  font-family: var(--ff-head);
+  font-weight: 700;
+  font-size: .68rem;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--bg);
+  background: var(--accent-2);
+  padding: 3px 10px;
+  transform: rotate(-2deg);
+}
+.service-block:nth-child(2) .service-tag { background: var(--accent); transform: rotate(1.5deg); }
 .service-block h3 {
   font-family: var(--ff-head);
-  margin-bottom: 16px;
+  margin: 16px 0 12px;
   font-size: 1.15rem;
 }
 .service-block p { font-size: .95rem; }
+@media (max-width: 800px) {
+  .service-block:nth-child(1),
+  .service-block:nth-child(2) { transform: none; margin-top: 0; }
+}
 
 /* ---------- Work / Portfolio ---------- */
 .work-filters {
@@ -559,4 +586,104 @@ ul { list-style: none; }
 [data-reveal].is-visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* ============================================================
+   GRAFFITI NEON LAYER — accenti spray rosa/blu (stile organico)
+   ============================================================ */
+
+/* ---------- Glitch cromatico neon (logo + hero) ---------- */
+.neon-glitch {
+  display: inline-block;
+  position: relative;
+  text-shadow:
+    0.045em 0 rgba(60, 133, 255, .65),
+    -0.045em 0 rgba(197, 64, 182, .65);
+  animation: glitch-flicker 7s infinite;
+}
+@keyframes glitch-flicker {
+  0%, 90%, 100% {
+    transform: none;
+    text-shadow: 0.045em 0 rgba(60,133,255,.65), -0.045em 0 rgba(197,64,182,.65);
+  }
+  91% {
+    transform: translateX(-3px) skewX(-4deg);
+    text-shadow: 0.14em 0 rgba(60,133,255,.9), -0.14em 0 rgba(197,64,182,.9);
+  }
+  92.5% {
+    transform: translateX(3px) skewX(3deg);
+    text-shadow: -0.1em 0.04em rgba(60,133,255,.85), 0.1em -0.04em rgba(197,64,182,.85);
+  }
+  94% {
+    transform: translateX(-1px);
+    text-shadow: 0.08em 0 rgba(60,133,255,.8), -0.08em 0 rgba(197,64,182,.8);
+  }
+  95.5% { transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .neon-glitch { animation: none; }
+}
+
+/* ---------- Divisori: linea netta stile graffito (tag underline) ---------- */
+.row-divider.drip {
+  height: 14px;
+  opacity: .95;
+  background: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1180 14' preserveAspectRatio='none'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='0'><stop offset='0' stop-color='%233c85ff'/><stop offset='1' stop-color='%23c540b6'/></linearGradient></defs><path d='M0 7 C 250 4, 350 10, 590 7 C 830 4, 930 10, 1180 7' stroke='url(%23g)' stroke-width='1.5' fill='none' stroke-linecap='round'/></svg>") no-repeat center / 100% 14px;
+}
+
+/* ---------- Doodle a mano (scarabocchi neon ai margini) ---------- */
+.doodle {
+  position: absolute;
+  pointer-events: none;
+  opacity: .55;
+  filter: drop-shadow(0 0 6px currentColor);
+  z-index: 1;
+}
+.doodle-inline {
+  position: static;
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 12px;
+  margin-top: -8px;
+  pointer-events: none;
+  opacity: .7;
+  filter: drop-shadow(0 0 6px currentColor);
+}
+.doodle-blue { color: var(--accent); }
+.doodle-pink { color: var(--accent-2); }
+.doodle-star { width: 34px; }
+.doodle-x { width: 26px; }
+.doodle-inline.doodle-star { width: 22px; }
+.doodle-inline.doodle-x { width: 18px; }
+.work-filters { position: relative; }
+@media (max-width: 700px) {
+  .doodle { display: none; }
+}
+
+/* ---------- Hover spray sulle card portfolio ---------- */
+.work-media { position: relative; }
+.work-media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  background:
+    radial-gradient(circle at 18% 82%, rgba(197, 64, 182, .55), transparent 42%),
+    radial-gradient(circle at 78% 16%, rgba(60, 133, 255, .5), transparent 46%),
+    radial-gradient(circle at 62% 72%, rgba(197, 64, 182, .3), transparent 28%),
+    radial-gradient(circle at 30% 24%, rgba(60, 133, 255, .25), transparent 24%);
+  opacity: 0;
+  transform: scale(1.15);
+  transition: opacity .45s ease, transform .6s ease;
+}
+.work-card:hover .work-media::after {
+  opacity: 1;
+  transform: scale(1);
+}
+.work-body h3 { transition: text-shadow .3s ease; }
+.work-card:hover .work-body h3 {
+  text-shadow:
+    0 0 10px rgba(197, 64, 182, .8),
+    0 0 22px rgba(60, 133, 255, .55);
 }

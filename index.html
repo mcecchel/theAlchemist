@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nome Cognome — Portfolio</title>
-  <meta name="description" content="Portfolio di Nome Cognome.">
+  <title>Marianna Cecchelli — Portfolio</title>
+  <meta name="description" content="Portfolio di Marianna Cecchelli — Visual Designer &amp; Full-Stack Developer.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -14,7 +14,7 @@
 
 
   <header class="site-header">
-    <a href="index.html" class="logo">N<span class="accent">.</span></a>
+    <a href="index.html" class="logo neon-glitch">M<span class="accent">.</span></a>
     <nav class="nav" id="site-nav">
       <a href="index.html" class="is-current">Home</a>
       <a href="about.html">About</a>
@@ -48,8 +48,10 @@
         <section class="hero row-hero-block roll-hero-landing">
           <canvas id="hero-particles-canvas" class="particles-canvas hero-particles-canvas"></canvas>
           <div class="hero-inner">
+            <svg class="doodle doodle-star doodle-blue" style="top:-38px;right:-8px;transform:rotate(14deg);" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 4 L23 17 L36 20 L23 23 L20 36 L17 23 L4 20 L17 17 Z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/></svg>
+            <svg class="doodle doodle-x doodle-pink" style="bottom:-30px;left:-20px;transform:rotate(-12deg);" viewBox="0 0 32 32" aria-hidden="true"><path d="M6 6 L26 26 M26 6 L6 26" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" fill="none"/></svg>
             <p class="hero-eyebrow" data-reveal>Marianna Cecchelli</p>
-            <h1 data-reveal>Full-Stack developer</h1>
+            <h1 data-reveal><span class="neon-glitch">Visual Designer &amp; Full-Stack Developer</span></h1>
             <h3 style="margin-top:14px;font-family:var(--ff-head);font-weight:400;" data-reveal>Digital Portfolio</h3>
           </div>
         </section>
@@ -61,30 +63,25 @@
     <section class="row-block row-light" id="services">
       <div class="row-inner">
         <div class="section-head">
-          <h2 data-reveal>Servizi offerti</h2>
+          <h2 data-reveal>Servizi offerti <svg class="doodle-inline doodle-x doodle-pink" viewBox="0 0 32 32" aria-hidden="true"><path d="M6 6 L26 26 M26 6 L6 26" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" fill="none"/></svg></h2>
         </div>
-        <div class="row-divider center"></div>
+        <div class="row-divider center drip"></div>
 
         <p class="services-tools" data-reveal>
           <span class="services-tools-label">Programmi</span>
-          Strumento 1 — Strumento 2 — Strumento 3 — Strumento 4 — Strumento 5
+          JavaScript / TypeScript — Python &amp; FastAPI — Node.js &amp; NestJS — Figma &amp; Adobe Creative Suite — Git &amp; Docker
         </p>
 
         <div class="services-grid">
           <div class="service-block" data-reveal>
-            <div class="icon-circle" aria-hidden="true">01</div>
-            <h3>Servizio Uno</h3>
-            <p>Descrizione breve del servizio: cosa offri, per chi, con quali strumenti. Placeholder.</p>
+            <span class="service-tag">Sviluppo</span>
+            <h3>Sviluppo Web Full-Stack</h3>
+            <p>Sviluppo e manutenzione di applicazioni web: interfacce responsive e performanti, logica server-side con Python (FastAPI) e Node.js, integrazione REST e workflow Git strutturati.</p>
           </div>
           <div class="service-block" data-reveal>
-            <div class="icon-circle" aria-hidden="true">02</div>
-            <h3>Servizio Due</h3>
-            <p>Descrizione breve del servizio: cosa offri, per chi, con quali strumenti. Placeholder.</p>
-          </div>
-          <div class="service-block" data-reveal>
-            <div class="icon-circle" aria-hidden="true">03</div>
-            <h3>Servizio Tre</h3>
-            <p>Descrizione breve del servizio: cosa offri, per chi, con quali strumenti. Placeholder.</p>
+            <span class="service-tag">Design</span>
+            <h3>Visual &amp; Brand Design</h3>
+            <p>Brand identity complete: logo, sistema tipografico, palette colori, tone of voice e brand guidelines, con Adobe Creative Suite e Figma.</p>
           </div>
         </div>
       </div>
@@ -94,9 +91,9 @@
     <section class="row-block row-light">
       <div class="row-inner">
         <div class="section-head">
-          <h2 data-reveal>Progetti recenti</h2>
+          <h2 data-reveal>Progetti recenti <svg class="doodle-inline doodle-star doodle-blue" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 4 L23 17 L36 20 L23 23 L20 36 L17 23 L4 20 L17 17 Z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/></svg></h2>
         </div>
-        <div class="row-divider center"></div>
+        <div class="row-divider center drip"></div>
 
         <div class="work-grid">
           <article class="work-card" data-reveal>
@@ -104,9 +101,9 @@
               <img src="assets/img/project-placeholder-1.jpg" alt="Anteprima progetto 1" loading="lazy">
             </div>
             <div class="work-body">
-              <div class="work-tags"><span>Categoria 1</span></div>
-              <h3>Progetto Uno</h3>
-              <p>Breve descrizione placeholder del progetto.</p>
+              <div class="work-tags"><span>Web Development</span></div>
+              <h3>ITRAD — Applicazioni web industriali</h3>
+              <p>Sviluppo e manutenzione di applicazioni web in ambiente aerospace &amp; defense, con focus su qualità del codice e scalabilità.</p>
             </div>
           </article>
           <article class="work-card" data-reveal>
@@ -114,9 +111,9 @@
               <img src="assets/img/project-placeholder-2.jpg" alt="Anteprima progetto 2" loading="lazy">
             </div>
             <div class="work-body">
-              <div class="work-tags"><span>Categoria 2</span></div>
-              <h3>Progetto Due</h3>
-              <p>Breve descrizione placeholder del progetto.</p>
+              <div class="work-tags"><span>Brand Identity</span></div>
+              <h3>ITRAD — Rebranding</h3>
+              <p>Rebranding completo della brand identity: logo, sistema tipografico, palette colori e brand guidelines.</p>
             </div>
           </article>
           <article class="work-card" data-reveal>
@@ -124,9 +121,9 @@
               <img src="assets/img/project-placeholder-3.jpg" alt="Anteprima progetto 3" loading="lazy">
             </div>
             <div class="work-body">
-              <div class="work-tags"><span>Categoria 3</span></div>
-              <h3>Progetto Tre</h3>
-              <p>Breve descrizione placeholder del progetto.</p>
+              <div class="work-tags"><span>WordPress</span></div>
+              <h3>EdV — A Garden with a View</h3>
+              <p>Rebranding, sito web e podcast per un brand locale.</p>
             </div>
           </article>
         </div>
@@ -142,18 +139,18 @@
       <div class="row-inner contact-cta-inner">
         <p style="font-style:italic;opacity:.8;margin-bottom:8px;" data-reveal><em>Cerchi un professionista?</em></p>
         <h2 style="font-family:var(--ff-head);font-size:clamp(1.6rem,4vw,2.4rem);" data-reveal>Contattami</h2>
-        <div class="row-divider center" style="max-width:1180px;"></div>
+        <div class="row-divider center drip" style="max-width:1180px;"></div>
 
         <div class="contact-cta-grid" data-reveal>
           <div>
             <div class="icon-circle" aria-hidden="true">@</div>
             <h3>Email</h3>
-            <a href="mailto:tuamail@esempio.com">tuamail@esempio.com</a>
+            <a href="mailto:cecchelli.marianna@gmail.com">cecchelli.marianna@gmail.com</a>
           </div>
           <div>
             <div class="icon-circle" aria-hidden="true">in</div>
             <h3>LinkedIn</h3>
-            <a href="#" target="_blank" rel="noopener">Nome Cognome</a>
+            <a href="#" target="_blank" rel="noopener">Marianna Cecchelli</a>
           </div>
         </div>
       </div>
@@ -164,8 +161,8 @@
   <footer class="site-footer">
     <div class="row-inner">
       <div class="row-divider" style="opacity:.15;"></div>
-      <p>Breve disclaimer placeholder: cosa raccoglie questo sito, eventuali note su aggiornamenti in corso.</p>
-      <p style="margin-top:10px;">&copy; <span id="year"></span> Nome Cognome.</p>
+      <p>Portfolio personale di Marianna Cecchelli — contenuti e progetti in aggiornamento.</p>
+      <p style="margin-top:10px;">&copy; <span id="year"></span> Marianna Cecchelli.</p>
     </div>
   </footer>
 
