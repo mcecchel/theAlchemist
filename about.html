@@ -4,209 +4,244 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About — Marianna Cecchelli</title>
-  <meta name="description" content="Marianna Cecchelli: profilo, formazione, competenze ed esperienze.">
+  <meta name="description" content="Percorso, formazione, competenze ed esperienze di Marianna Cecchelli — Visual Designer &amp; Full-Stack Developer.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/fonts.css">
   <link rel="stylesheet" href="css/style.css">
+  <script>
+  (function(){
+    try{
+      var params = new URLSearchParams(location.search);
+      if (params.has('reset')){
+        sessionStorage.removeItem('mc-lens');
+      } else {
+        var l = params.get('lens') || sessionStorage.getItem('mc-lens');
+        if (l === 'design' || l === 'dev') document.documentElement.setAttribute('data-lens', l);
+      }
+    } catch(e){}
+  })();
+  </script>
 </head>
 <body>
 
-
-  <header class="site-header">
-    <a href="index.html" class="logo neon-glitch">M<span class="accent">.</span></a>
-    <nav class="nav" id="site-nav">
-      <a href="index.html">Home</a>
-      <a href="about.html" class="is-current">About</a>
-      <a href="portfolio.html">Portfolio</a>
-      <a href="contatti.html">Contatti</a>
-    </nav>
-    <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false" aria-controls="site-nav">
-      <span></span><span></span><span></span>
+<div class="lens-gate">
+  <canvas id="gate-particles-canvas" class="particles-canvas"></canvas>
+  <p class="hero-eyebrow">Marianna Cecchelli — Firenze</p>
+  <h1>Di cosa hai bisogno?</h1>
+  <div class="lens-picker" role="group" aria-label="Scegli il profilo da cui guardare il portfolio">
+    <button type="button" class="lens-card is-design" data-set-lens="design" aria-pressed="false">
+      <span class="lc-kicker">Profilo 01</span>
+      <h2>Designer</h2>
+      <p>Brand identity, sistemi tipografici, direzione visiva. IED Firenze, 110/110.</p>
+      <p class="lc-stack">Adobe CC · Figma · Brand guidelines</p>
     </button>
-  </header>
+    <button type="button" class="lens-card is-dev" data-set-lens="dev" aria-pressed="false">
+      <span class="lc-kicker">Profilo 02</span>
+      <h2>Developer</h2>
+      <p>Full-stack: front-end, back-end, API. 42 Firenze, oggi in aerospace &amp; defense.</p>
+      <p class="lc-stack">JS/TS · Python · FastAPI · Node · Git</p>
+    </button>
+  </div>
+</div>
 
-  <main>
+<div class="lens-sweep" aria-hidden="true"></div>
 
-    <!-- PROFILO — blocco pieno viola #49498f -->
-    <section class="row-block row-about" style="padding-top:160px;">
-      <div class="about-hero-grid">
-        <div class="about-hero-media" data-reveal>
-          <img src="assets/img/profile-placeholder.jpg" alt="Foto profilo placeholder">
-        </div>
-        <div class="about-hero-text">
-          <h1 data-reveal>Marianna Cecchelli <svg class="doodle-inline doodle-star doodle-pink" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 4 L23 17 L36 20 L23 23 L20 36 L17 23 L4 20 L17 17 Z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/></svg></h1>
-          <p class="about-quote" data-reveal>Visual Designer &amp; Full-Stack Developer</p>
-          <div class="row-divider drip" style="max-width:200px;margin:20px 0 30px;"></div>
+<header class="site-header">
+  <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="Marianna Cecchelli" class="logo-img"></a>
+  <div class="lens-pill">
+    <span>Profilo: <b id="lens-name">—</b></span>
+    <button type="button" id="lens-swap">ribalta</button>
+  </div>
+  <nav class="nav" id="site-nav">
+    <a href="index.html">Home</a>
+    <a href="about.html" class="is-current">About</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="contatti.html">Contatti</a>
+  </nav>
+  <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false" aria-controls="site-nav">
+    <span></span><span></span><span></span>
+  </button>
+</header>
 
-          <h3 data-reveal>Profilo</h3>
-          <p data-reveal>
-            Full-Stack Developer con background in Visual Design, attualmente impegnata come
-            freelance nello sviluppo e nella manutenzione di applicazioni web in contesti
-            industriali ad alto standard qualitativo.
-          </p>
-          <p data-reveal>
-            Costruisco interfacce pulite e performanti mentre gestisco logica server-side e
-            ottimizzazione del codice — unendo la solidità tecnica del percorso a 42 Firenze
-            con la sensibilità visiva maturata allo IED. Il mio obiettivo è portare valore in
-            team che sviluppano prodotti reali, scrivendo codice pulito, scalabile e ben documentato.
-          </p>
-        </div>
-      </div>
-    </section>
+<main id="top">
 
-    <!-- FORMAZIONE + LINGUE — blocco pieno bianco -->
-    <section class="row-block row-light">
-      <div class="row-inner">
-        <div class="section-head">
-          <h2 data-reveal>Formazione</h2>
-        </div>
-        <div class="row-divider center drip"></div>
-
-        <ul class="edu-list" data-reveal>
-          <li>
-            <strong>42 Firenze</strong>
-            <span>Novembre 2024 – in corso · Firenze, Italia</span>
-          </li>
-          <li>
-            <strong>IED — Istituto Europeo di Design, Firenze</strong>
-            <span>Diploma Accademico di Primo Livello in Design della comunicazione, indirizzo Comunicazione pubblicitaria (2021 – 2024) · 110/110</span>
-          </li>
-          <li>
-            <strong>Liceo Classico Giosuè Carducci — Volterra</strong>
-            <span>Diploma di scuola superiore (2016 – 2021) · 88/100</span>
-          </li>
-        </ul>
-
-        <h3 class="lingue-title" data-reveal>Lingue</h3>
-        <p class="lingue-text" data-reveal>
-          Italiano (madrelingua) — Inglese (C1) — Francese (B1)
-        </p>
-      </div>
-    </section>
-
-    <!-- SKILLS — blocco pieno bianco -->
-    <section class="row-block row-light" id="skills">
-      <div class="row-inner">
-        <div class="section-head">
-          <h2 data-reveal>Cosa so fare</h2>
-        </div>
-        <div class="row-divider center drip"></div>
-
-        <div class="skills-grid">
-          <div class="skill-block" data-reveal>
-            <h3>Linguaggi</h3>
-            <ul class="skill-tags">
-              <li>C · C++</li>
-              <li>JavaScript · TypeScript</li>
-              <li>Python</li>
-              <li>HTML5 · CSS3</li>
-              <li>Bash / Shell</li>
-            </ul>
-          </div>
-          <div class="skill-block" data-reveal>
-            <h3>Frontend</h3>
-            <ul class="skill-tags">
-              <li>Tailwind CSS</li>
-              <li>Responsive Design</li>
-              <li>UX/UI Design</li>
-              <li>Figma</li>
-            </ul>
-          </div>
-          <div class="skill-block" data-reveal>
-            <h3>Backend</h3>
-            <ul class="skill-tags">
-              <li>Python 3.x · FastAPI</li>
-              <li>NestJS · Node.js</li>
-              <li>REST API</li>
-              <li>HTTP Protocol</li>
-            </ul>
-          </div>
-          <div class="skill-block" data-reveal>
-            <h3>Networking &amp; Protocolli</h3>
-            <ul class="skill-tags">
-              <li>TCP/IP · UDP &amp; TCP Sockets</li>
-              <li>DNS Resolution</li>
-              <li>Subnetting &amp; Routing</li>
-              <li>Network Troubleshooting · Endianness</li>
-            </ul>
-          </div>
-          <div class="skill-block" data-reveal>
-            <h3>Algoritmi &amp; Strutture Dati</h3>
-            <ul class="skill-tags">
-              <li>Sorting · Binary Search</li>
-              <li>Linked Lists · Binary Trees</li>
-              <li>Stack · Queue · Hash Tables</li>
-              <li>Analisi di complessità (Big O)</li>
-            </ul>
-          </div>
-          <div class="skill-block" data-reveal>
-            <h3>Tools &amp; Design</h3>
-            <ul class="skill-tags">
-              <li>Git &amp; GitHub · Docker</li>
-              <li>Linux/Unix · GDB · Valgrind</li>
-              <li>Adobe Creative Suite · Figma</li>
-              <li>WordPress · Digital Marketing</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ESPERIENZE — blocco pieno scuro #1f1f21 -->
-    <section class="row-block row-dark">
-      <div class="row-inner">
-        <div class="section-head">
-          <h2 data-reveal>Principali esperienze <svg class="doodle-inline doodle-x doodle-blue" viewBox="0 0 32 32" aria-hidden="true"><path d="M6 6 L26 26 M26 6 L6 26" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" fill="none"/></svg></h2>
-        </div>
-        <div class="row-divider center drip"></div>
-
-        <div class="experience-grid">
-          <div class="experience-block" data-reveal>
-            <div class="icon-circle" aria-hidden="true">01</div>
-            <h3>ITRAD — Sviluppatore Web Freelance</h3>
-            <p class="experience-scope">Apr 2026 – presente · Web Development</p>
-            <p>Sviluppo e manutenzione di applicazioni web in ambiente industriale aerospace &amp; defense.</p>
-            <ul class="experience-list">
-              <li>Interfacce responsive e ottimizzate</li>
-              <li>Flussi HTTP/REST e integrazione con servizi backend</li>
-              <li>Workflow Git: branch, PR, code review</li>
-            </ul>
-          </div>
-          <div class="experience-block" data-reveal>
-            <div class="icon-circle" aria-hidden="true">02</div>
-            <h3>ITRAD — Visual Designer Freelance</h3>
-            <p class="experience-scope">Feb 2026 – Apr 2026 · Brand Identity</p>
-            <p>Rebranding completo della brand identity aziendale.</p>
-            <ul class="experience-list">
-              <li>Logo e sistema tipografico</li>
-              <li>Palette colori e tone of voice</li>
-              <li>Brand guidelines</li>
-            </ul>
-          </div>
-          <div class="experience-block" data-reveal>
-            <div class="icon-circle" aria-hidden="true">03</div>
-            <h3>Freelance — Digital &amp; Web Projects</h3>
-            <p class="experience-scope">Ott 2022 – Apr 2024 · WordPress · Digital Strategy</p>
-            <p>Web developer e digital strategist per brand locali.</p>
-            <ul class="experience-list">
-              <li>Siti WordPress: hosting, performance, temi e plugin</li>
-              <li>UX design e content management (editoriale, e-commerce)</li>
-              <li>Clienti: EdV — A Garden with a View, DiLeonardo, marketing territoriale</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <footer class="site-footer">
+  <!-- PROFILO -->
+  <section class="row-block page-head">
     <div class="row-inner">
-      <p>&copy; <span id="year"></span> Marianna Cecchelli.</p>
-    </div>
-  </footer>
+      <p class="meta" data-reveal>Chi sono</p>
+      <h2 class="section-title" data-reveal>About</h2>
+      <div class="row-divider"></div>
 
-  <script src="js/script.js"></script>
+      <div class="about-grid">
+        <div class="about-photo" data-reveal>
+          <img src="assets/img/about-photo.svg" alt="Marianna Cecchelli">
+        </div>
+
+        <div class="about-text" data-reveal>
+          <p class="about-quote">Visual Designer &amp; Full-Stack Developer</p>
+          <h1 data-both="Due formazioni, un modo solo di lavorare"
+              data-design="Prima il progetto: forma, sistema, coerenza"
+              data-dev="Prima il codice: struttura, logica, manutenibilità">
+            Due formazioni, un modo solo di lavorare
+          </h1>
+
+          <p style="margin-top:20px;"
+             data-both="Vengo dal design della comunicazione — <strong>IED Firenze, 110/110</strong> — e dalla programmazione — <strong>42 Firenze</strong>, dove la didattica peer-to-peer e i progetti in C/C++ mi hanno insegnato a smontare i problemi prima di risolverli. Non ho scelto tra le due cose: le uso insieme."
+             data-design="Vengo dal design della comunicazione: <strong>IED Firenze, 110/110</strong>. Brand identity, sistemi tipografici, direzione visiva. È il mestiere in cui ho imparato che una forma regge solo se sotto c'è un sistema."
+             data-dev="Vengo dalla programmazione: <strong>42 Firenze</strong>, didattica peer-to-peer, progetti in C e C++, algoritmi, reti, Unix. È la scuola in cui ho imparato a smontare i problemi prima di risolverli.">
+            Vengo dal design della comunicazione — <strong>IED Firenze, 110/110</strong> — e dalla programmazione — <strong>42 Firenze</strong>, dove la didattica peer-to-peer e i progetti in C/C++ mi hanno insegnato a smontare i problemi prima di risolverli. Non ho scelto tra le due cose: le uso insieme.
+          </p>
+
+          <p data-both="Oggi lavoro come sviluppatrice web freelance in ambito industriale (aerospace &amp; defense), dopo un percorso da visual designer e da web developer / digital strategist per brand locali. La stessa persona che disegna il sistema poi lo mette in produzione."
+             data-design="La parte visiva non finisce nel file di consegna: avendo poi sviluppato quelle stesse interfacce, progetto sapendo cosa succede quando l'identità incontra un browser, uno stato di errore o una tabella con mille righe."
+             data-dev="Il codice non finisce nella pull request: avendo progettato l'identità di ciò che sviluppo, scrivo componenti che restano coerenti quando il prodotto cresce, invece di rincorrere l'interfaccia con patch CSS.">
+            Oggi lavoro come sviluppatrice web freelance in ambito industriale (aerospace &amp; defense), dopo un percorso da visual designer e da web developer / digital strategist per brand locali. La stessa persona che disegna il sistema poi lo mette in produzione.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMAZIONE -->
+  <section class="row-block">
+    <div class="row-inner">
+      <p class="meta" data-reveal>Percorso</p>
+      <h2 class="section-title" data-reveal>Formazione</h2>
+      <div class="row-divider"></div>
+
+      <ul class="edu-list" data-reveal>
+        <li>
+          <div><strong>42 Firenze</strong><em>Programmazione — C, C++, algoritmi, reti, Unix</em></div>
+          <span class="edu-when">nov 2024 — in corso</span>
+        </li>
+        <li>
+          <div><strong>IED Firenze</strong><em>Design della comunicazione — 110/110</em></div>
+          <span class="edu-when">2021 — 2024</span>
+        </li>
+        <li>
+          <div><strong>Liceo Classico Carducci, Volterra</strong><em>Maturità classica — 88/100</em></div>
+          <span class="edu-when">2016 — 2021</span>
+        </li>
+      </ul>
+
+      <p class="lang-line" data-reveal>Lingue: italiano madrelingua · inglese C1 · francese B1</p>
+    </div>
+  </section>
+
+  <!-- COMPETENZE — raggruppate per profilo -->
+  <section class="row-block">
+    <div class="row-inner">
+      <p class="meta" data-reveal>Cosa so fare</p>
+      <h2 class="section-title" data-reveal>Competenze</h2>
+      <div class="row-divider"></div>
+
+      <div class="skills-columns">
+        <div class="skill-col is-dev" data-reveal>
+          <span class="service-tag" style="background:#c540b6;">Developer</span>
+          <h3>Costruire</h3>
+          <div class="skill-group">
+            <h4>Linguaggi</h4>
+            <p>C · C++ · JavaScript · TypeScript · Python · HTML/CSS · Bash</p>
+          </div>
+          <div class="skill-group">
+            <h4>Backend</h4>
+            <p>FastAPI · NestJS · Node.js · API REST</p>
+          </div>
+          <div class="skill-group">
+            <h4>Networking &amp; protocolli</h4>
+            <p>TCP/IP · DNS · socket</p>
+          </div>
+          <div class="skill-group">
+            <h4>Algoritmi &amp; strutture dati</h4>
+            <p>Complessità, strutture, problem solving (42)</p>
+          </div>
+          <div class="skill-group">
+            <h4>Tools</h4>
+            <p>Git · Docker · Linux</p>
+          </div>
+        </div>
+
+        <div class="skill-col is-design" data-reveal>
+          <span class="service-tag" style="background:#3c85ff;">Designer</span>
+          <h3>Progettare</h3>
+          <div class="skill-group">
+            <h4>Brand identity</h4>
+            <p>Logo · sistema tipografico · palette · tone of voice · brand guidelines</p>
+          </div>
+          <div class="skill-group">
+            <h4>UX / UI</h4>
+            <p>Interfacce, design system, prototipazione</p>
+          </div>
+          <div class="skill-group">
+            <h4>Frontend</h4>
+            <p>Tailwind · CSS architetturale · Figma → codice</p>
+          </div>
+          <div class="skill-group">
+            <h4>Strumenti</h4>
+            <p>Adobe Creative Suite · Figma · WordPress</p>
+          </div>
+          <div class="skill-group">
+            <h4>Comunicazione</h4>
+            <p>Direzione visiva, editoriale, video</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ESPERIENZE -->
+  <section class="row-block">
+    <div class="row-inner">
+      <p class="meta" data-reveal>Dove ho lavorato</p>
+      <h2 class="section-title" data-reveal>Esperienze</h2>
+      <div class="row-divider"></div>
+
+      <div class="exp-list">
+        <article class="exp-item" data-reveal>
+          <p class="exp-when">apr 2026 — presente</p>
+          <div>
+            <h3>ITRAD</h3>
+            <p class="exp-role">Sviluppatrice Web Freelance</p>
+            <p>Sviluppo e manutenzione di applicazioni web in ambito aerospace &amp; defense: front-end in JavaScript/TypeScript, back-end in Python (FastAPI) e Node, integrazione di API REST, workflow Git.</p>
+          </div>
+        </article>
+
+        <article class="exp-item" data-reveal>
+          <p class="exp-when">feb 2026 — apr 2026</p>
+          <div>
+            <h3>ITRAD</h3>
+            <p class="exp-role">Visual Designer Freelance</p>
+            <p>Rebranding della brand identity aziendale: logo, sistema tipografico, palette colori, applicazioni e brand guidelines. Da qui è poi nata la collaborazione sullo sviluppo.</p>
+          </div>
+        </article>
+
+        <article class="exp-item" data-reveal>
+          <p class="exp-when">ott 2022 — apr 2024</p>
+          <div>
+            <h3>Freelance</h3>
+            <p class="exp-role">Web Developer &amp; Digital Strategist</p>
+            <p>Siti, identità e strategia digitale per brand locali: EdV — A Garden with a View, DiLeonardo, progetti di marketing territoriale.</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="work-more" data-reveal>
+        <a href="portfolio.html" class="btn">Guarda i progetti →</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="row-inner">
+    <p>© <span id="year"></span> Marianna Cecchelli</p>
+    <p>Firenze — contenuti e progetti in aggiornamento</p>
+  </div>
+</footer>
+
+<script src="js/script.js"></script>
 </body>
 </html>

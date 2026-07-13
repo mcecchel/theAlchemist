@@ -4,65 +4,121 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contatti — Marianna Cecchelli</title>
-  <meta name="description" content="Come contattarmi.">
+  <meta name="description" content="Contatti di Marianna Cecchelli — Visual Designer &amp; Full-Stack Developer, Firenze.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/fonts.css">
   <link rel="stylesheet" href="css/style.css">
+  <script>
+  (function(){
+    try{
+      var params = new URLSearchParams(location.search);
+      if (params.has('reset')){
+        sessionStorage.removeItem('mc-lens');
+      } else {
+        var l = params.get('lens') || sessionStorage.getItem('mc-lens');
+        if (l === 'design' || l === 'dev') document.documentElement.setAttribute('data-lens', l);
+      }
+    } catch(e){}
+  })();
+  </script>
 </head>
 <body>
 
-
-  <header class="site-header">
-    <a href="index.html" class="logo neon-glitch">M<span class="accent">.</span></a>
-    <nav class="nav" id="site-nav">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="portfolio.html">Portfolio</a>
-      <a href="contatti.html" class="is-current">Contatti</a>
-    </nav>
-    <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false" aria-controls="site-nav">
-      <span></span><span></span><span></span>
+<div class="lens-gate">
+  <canvas id="gate-particles-canvas" class="particles-canvas"></canvas>
+  <p class="hero-eyebrow">Marianna Cecchelli — Firenze</p>
+  <h1>Di cosa hai bisogno?</h1>
+  <div class="lens-picker" role="group" aria-label="Scegli il profilo da cui guardare il portfolio">
+    <button type="button" class="lens-card is-design" data-set-lens="design" aria-pressed="false">
+      <span class="lc-kicker">Profilo 01</span>
+      <h2>Designer</h2>
+      <p>Brand identity, sistemi tipografici, direzione visiva. IED Firenze, 110/110.</p>
+      <p class="lc-stack">Adobe CC · Figma · Brand guidelines</p>
     </button>
-  </header>
+    <button type="button" class="lens-card is-dev" data-set-lens="dev" aria-pressed="false">
+      <span class="lc-kicker">Profilo 02</span>
+      <h2>Developer</h2>
+      <p>Full-stack: front-end, back-end, API. 42 Firenze, oggi in aerospace &amp; defense.</p>
+      <p class="lc-stack">JS/TS · Python · FastAPI · Node · Git</p>
+    </button>
+  </div>
+</div>
 
-  <main>
+<div class="lens-sweep" aria-hidden="true"></div>
 
-    <!-- CONTATTI — unico blocco pieno verde #43795c, come l'originale: mappa + info -->
-    <section class="row-block row-contact" style="padding-top:160px;min-height:90vh;display:flex;align-items:center;">
-      <div class="contact-page-grid">
+<header class="site-header">
+  <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="Marianna Cecchelli" class="logo-img"></a>
+  <div class="lens-pill">
+    <span>Profilo: <b id="lens-name">—</b></span>
+    <button type="button" id="lens-swap">ribalta</button>
+  </div>
+  <nav class="nav" id="site-nav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="contatti.html" class="is-current">Contatti</a>
+  </nav>
+  <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false" aria-controls="site-nav">
+    <span></span><span></span><span></span>
+  </button>
+</header>
 
-        <div class="map-placeholder" data-reveal aria-hidden="true">
-          <span>Mappa — Firenze, Italia</span>
-        </div>
+<main id="top">
 
-        <div class="contact-page-info" data-reveal>
-          <p class="contact-eyebrow"><em>Dove lavoro</em></p>
-          <h2>Firenze, Italia <svg class="doodle-inline doodle-star doodle-blue" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 4 L23 17 L36 20 L23 23 L20 36 L17 23 L4 20 L17 17 Z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/></svg></h2>
-          <p class="contact-address">Freelance — disponibile in sede e da remoto</p>
-          <p class="contact-note">
-            Sviluppo web full-stack e visual design:
-            scrivimi per informazioni o per parlare di un progetto.
-          </p>
-          <p class="contact-note">Mail: <a href="mailto:cecchelli.marianna@gmail.com" style="border-bottom:1px solid currentColor;">cecchelli.marianna@gmail.com</a></p>
-
-          <p class="contact-eyebrow" style="margin-top:30px;"><em>Dai un'occhiata ai lavori online</em></p>
-          <p class="contact-links">
-            <a href="#" target="_blank" rel="noopener">GitHub</a> — <a href="#" target="_blank" rel="noopener">LinkedIn</a>
-          </p>
-        </div>
-
-      </div>
-    </section>
-
-  </main>
-
-  <footer class="site-footer">
+  <section class="row-block page-head">
     <div class="row-inner">
-      <p>&copy; <span id="year"></span> Marianna Cecchelli.</p>
-    </div>
-  </footer>
+      <p class="meta" data-reveal>Parliamone</p>
+      <h2 class="section-title" data-reveal>Contatti</h2>
+      <div class="row-divider"></div>
 
-  <script src="js/script.js"></script>
+      <h1 data-reveal style="max-width:20ch;"
+          data-both="Scrivimi: dimmi da quale lato parte il progetto, al resto pensiamo insieme."
+          data-design="Scrivimi: se serve un'identità che regga anche in produzione, parliamone."
+          data-dev="Scrivimi: se serve chi scrive il codice senza perdere di vista l'interfaccia, parliamone.">
+        Scrivimi: dimmi da quale lato parte il progetto, al resto pensiamo insieme.
+      </h1>
+
+      <p class="lead" data-reveal style="margin-top:20px;">
+        Base a Firenze. Lavoro in sede o da remoto, su progetti di sviluppo web, brand identity o entrambi.
+      </p>
+
+      <div class="contact-avail" data-reveal>
+        <span>Firenze</span>
+        <span>In sede</span>
+        <span>Da remoto</span>
+        <span>Freelance</span>
+      </div>
+
+      <div class="row-divider short"></div>
+
+      <div class="contact-grid" data-reveal>
+        <div class="contact-item">
+          <p class="meta">Email</p>
+          <a href="mailto:cecchelli.marianna@gmail.com">cecchelli.marianna@gmail.com</a>
+        </div>
+        <div class="contact-item">
+          <p class="meta">LinkedIn</p>
+          <a href="#" target="_blank" rel="noopener">Marianna Cecchelli</a>
+        </div>
+        <div class="contact-item">
+          <p class="meta">GitHub</p>
+          <a href="#" target="_blank" rel="noopener">Marianna Cecchelli</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="row-inner">
+    <p>© <span id="year"></span> Marianna Cecchelli</p>
+    <p>Firenze — contenuti e progetti in aggiornamento</p>
+  </div>
+</footer>
+
+<script src="js/script.js"></script>
 </body>
 </html>

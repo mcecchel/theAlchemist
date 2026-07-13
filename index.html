@@ -1,171 +1,261 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Marianna Cecchelli — Portfolio</title>
-  <meta name="description" content="Portfolio di Marianna Cecchelli — Visual Designer &amp; Full-Stack Developer.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Marianna Cecchelli — Visual Designer &amp; Full-Stack Developer</title>
+	<meta name="description" content="Portfolio di Marianna Cecchelli — Visual Designer &amp; Full-Stack Developer. Firenze.">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="css/fonts.css">
+	<link rel="stylesheet" href="css/style.css">
+	<script>
+	(function(){
+		try{
+			var params = new URLSearchParams(location.search);
+			if (params.has('reset')){
+				sessionStorage.removeItem('mc-lens');
+			} else {
+				var l = params.get('lens') || sessionStorage.getItem('mc-lens');
+				if (l === 'design' || l === 'dev') document.documentElement.setAttribute('data-lens', l);
+			}
+		} catch(e){}
+	})();
+	</script>
 </head>
 <body>
 
+<div class="lens-gate">
+	<canvas id="gate-particles-canvas" class="particles-canvas"></canvas>
+	<p class="hero-eyebrow">Marianna Cecchelli</p>
+	<p class="hero-eyebrow"><span class="w-design">Visual Designer</span> &amp; <span class="w-dev">Full-stack Developer</span></p>
+	<h1>Di cosa hai bisogno?</h1>
+	<div class="lens-picker" role="group" aria-label="Scegli il profilo da cui guardare il portfolio">
+		<button type="button" class="lens-card is-design" data-set-lens="design" aria-pressed="false">
+			<span class="lc-kicker">Profilo 01</span>
+			<h2>Designer</h2>
+			<p>Trasformo un'idea in un'identità che sta in piedi ovunque: logo, tipografia, palette, tone of voice, linee guida. Poi la porto su schermo: interfacce, UX/UI, sito online.</p>
+			<p class="lc-stack">Adobe Creative Suite · Figma · Brand identity · UX/UI · WordPress</p>
+		</button>
+		<button type="button" class="lens-card is-dev" data-set-lens="dev" aria-pressed="false">
+			<span class="lc-kicker">Profilo 02</span>
+			<h2>Developer</h2>
+			<p>Costruisco applicazioni web che reggono il carico: interfacce responsive e veloci, logica server-side, API REST. Codice pulito, scalabile, versionato come si deve.</p>
+			<p class="lc-stack">Sviluppo Full-Stack · HTML/CSS · Python · C/C++ · Node.js · Git · Docker</p>
+		</button>
+	</div>
+</div>
 
-  <header class="site-header">
-    <a href="index.html" class="logo neon-glitch">M<span class="accent">.</span></a>
-    <nav class="nav" id="site-nav">
-      <a href="index.html" class="is-current">Home</a>
-      <a href="about.html">About</a>
-      <a href="portfolio.html">Portfolio</a>
-      <a href="contatti.html">Contatti</a>
-    </nav>
-    <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false" aria-controls="site-nav">
-      <span></span><span></span><span></span>
-    </button>
-  </header>
+<div class="lens-sweep" aria-hidden="true"></div>
 
-  <main id="top">
+<header class="site-header">
+	<a href="index.html" class="logo"><img src="assets/img/logo.png" alt="Marianna Cecchelli" class="logo-img"></a>
 
-    <!-- COVER PARTICELLE → ROLL 3D → ATTERRA SULLA HERO -->
-    <div class="roll-stage">
-      <div class="roll-sticky">
+	<div class="lens-pill">
+		<span>Profilo: <b id="lens-name">—</b></span>
+		<button type="button" id="lens-swap">ribalta</button>
+	</div>
 
-        <!-- Layer 1: cover particellare, in cima, ruota via -->
-        <div class="roll-cover">
-          <canvas id="particles-canvas" class="particles-canvas"></canvas>
-          <p id="cover-welcome" class="cover-welcome">
-            <span class="cover-line1">welcome to my</span>
-            <span class="cover-line2">playground</span>
-          </p>
-          <div class="hero-scroll" aria-hidden="true">
-            <span></span> scroll
-          </div>
-        </div>
+	<nav class="nav" id="site-nav">
+		<a href="index.html" class="is-current">Home</a>
+		<a href="about.html">About</a>
+		<a href="portfolio.html">Portfolio</a>
+		<a href="contatti.html">Contatti</a>
+	</nav>
 
-        <!-- Layer 2: hero reale, sotto, rivelata dal roll — particelle ambient proprie -->
-        <section class="hero row-hero-block roll-hero-landing">
-          <canvas id="hero-particles-canvas" class="particles-canvas hero-particles-canvas"></canvas>
-          <div class="hero-inner">
-            <svg class="doodle doodle-star doodle-blue" style="top:-38px;right:-8px;transform:rotate(14deg);" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 4 L23 17 L36 20 L23 23 L20 36 L17 23 L4 20 L17 17 Z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/></svg>
-            <svg class="doodle doodle-x doodle-pink" style="bottom:-30px;left:-20px;transform:rotate(-12deg);" viewBox="0 0 32 32" aria-hidden="true"><path d="M6 6 L26 26 M26 6 L6 26" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" fill="none"/></svg>
-            <p class="hero-eyebrow" data-reveal>Marianna Cecchelli</p>
-            <h1 data-reveal><span class="neon-glitch">Visual Designer &amp; Full-Stack Developer</span></h1>
-            <h3 style="margin-top:14px;font-family:var(--ff-head);font-weight:400;" data-reveal>Digital Portfolio</h3>
-          </div>
-        </section>
+	<button class="nav-toggle" aria-label="Apri menu" aria-expanded="false" aria-controls="site-nav">
+		<span></span><span></span><span></span>
+	</button>
+</header>
 
-      </div>
-    </div>
+<main id="top">
 
-    <!-- SERVIZI — blocco pieno bianco -->
-    <section class="row-block row-light" id="services">
-      <div class="row-inner">
-        <div class="section-head">
-          <h2 data-reveal>Servizi offerti <svg class="doodle-inline doodle-x doodle-pink" viewBox="0 0 32 32" aria-hidden="true"><path d="M6 6 L26 26 M26 6 L6 26" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" fill="none"/></svg></h2>
-        </div>
-        <div class="row-divider center drip"></div>
+	<!-- COVER PARTICELLE → ROLL 3D → ATTERRA SULLA HERO -->
+	<div class="roll-stage">
+		<div class="roll-sticky">
 
-        <p class="services-tools" data-reveal>
-          <span class="services-tools-label">Programmi</span>
-          JavaScript / TypeScript — Python &amp; FastAPI — Node.js &amp; NestJS — Figma &amp; Adobe Creative Suite — Git &amp; Docker
-        </p>
+			<!-- Layer 1: cover particellare, in cima, ruota via -->
+			<div class="roll-cover">
+				<canvas id="particles-canvas" class="particles-canvas"></canvas>
+				<p id="cover-welcome" class="cover-welcome">
+					<span class="cover-line1">welcome to my</span>
+					<span class="cover-line2">playground</span>
+				</p>
+				<div class="hero-scroll" aria-hidden="true">
+					<span></span> scroll
+				</div>
+			</div>
 
-        <div class="services-grid">
-          <div class="service-block" data-reveal>
-            <span class="service-tag">Sviluppo</span>
-            <h3>Sviluppo Web Full-Stack</h3>
-            <p>Sviluppo e manutenzione di applicazioni web: interfacce responsive e performanti, logica server-side con Python (FastAPI) e Node.js, integrazione REST e workflow Git strutturati.</p>
-          </div>
-          <div class="service-block" data-reveal>
-            <span class="service-tag">Design</span>
-            <h3>Visual &amp; Brand Design</h3>
-            <p>Brand identity complete: logo, sistema tipografico, palette colori, tone of voice e brand guidelines, con Adobe Creative Suite e Figma.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+			<!-- Layer 2: hero reale, sotto, rivelata dal roll — particelle ambient proprie -->
+			<section class="hero roll-hero-landing">
+				<canvas id="hero-particles-canvas" class="particles-canvas hero-particles-canvas"></canvas>
 
-    <!-- PORTFOLIO PREVIEW — blocco pieno bianco -->
-    <section class="row-block row-light">
-      <div class="row-inner">
-        <div class="section-head">
-          <h2 data-reveal>Progetti recenti <svg class="doodle-inline doodle-star doodle-blue" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 4 L23 17 L36 20 L23 23 L20 36 L17 23 L4 20 L17 17 Z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/></svg></h2>
-        </div>
-        <div class="row-divider center drip"></div>
+				<div class="hero-inner">
+					<p class="hero-eyebrow"
+						 data-both='Marianna Cecchelli — Visual Designer &amp; Full-Stack Developer'
+						 data-design='Marianna Cecchelli — <span class="w-design">Designer</span>'
+						 data-dev='Marianna Cecchelli — <span class="w-dev">Developer</span>'>
+						Marianna Cecchelli — Visual Designer &amp; Full-Stack Developer
+					</p>
 
-        <div class="work-grid">
-          <article class="work-card" data-reveal>
-            <div class="work-media">
-              <img src="assets/img/project-placeholder-1.jpg" alt="Anteprima progetto 1" loading="lazy">
-            </div>
-            <div class="work-body">
-              <div class="work-tags"><span>Web Development</span></div>
-              <h3>ITRAD — Applicazioni web industriali</h3>
-              <p>Sviluppo e manutenzione di applicazioni web in ambiente aerospace &amp; defense, con focus su qualità del codice e scalabilità.</p>
-            </div>
-          </article>
-          <article class="work-card" data-reveal>
-            <div class="work-media">
-              <img src="assets/img/project-placeholder-2.jpg" alt="Anteprima progetto 2" loading="lazy">
-            </div>
-            <div class="work-body">
-              <div class="work-tags"><span>Brand Identity</span></div>
-              <h3>ITRAD — Rebranding</h3>
-              <p>Rebranding completo della brand identity: logo, sistema tipografico, palette colori e brand guidelines.</p>
-            </div>
-          </article>
-          <article class="work-card" data-reveal>
-            <div class="work-media">
-              <img src="assets/img/project-placeholder-3.jpg" alt="Anteprima progetto 3" loading="lazy">
-            </div>
-            <div class="work-body">
-              <div class="work-tags"><span>WordPress</span></div>
-              <h3>EdV — A Garden with a View</h3>
-              <p>Rebranding, sito web e podcast per un brand locale.</p>
-            </div>
-          </article>
-        </div>
+					<h1 data-both='Chi <span class="w-design">progetta</span> è anche chi <span class="w-dev">costruisce</span>'
+							data-design='Progetto identità visive<br>e poi le <span class="w-dev">costruisco</span>'
+							data-dev='Costruisco applicazioni web<br>e prima le <span class="w-design">progetto</span>'>
+						Chi <span class="w-design">progetta</span> è anche chi <span class="w-dev">costruisce</span>
+					</h1>
 
-        <div class="work-more" data-reveal>
-          <a href="portfolio.html" class="btn btn-ghost">Vedi tutti i progetti →</a>
-        </div>
-      </div>
-    </section>
+					<p class="hero-sub"
+						 data-both="Visual Designer e Full-Stack Developer. Due mestieri, una persona sola: scegli da quale lato guardarla."
+						 data-design="Lato progetto: brand identity, sistemi visivi, interfacce. Il codice non sparisce — passa in secondo piano."
+						 data-dev="Lato codice: applicazioni web, API, architettura. Il design non sparisce — passa in secondo piano.">
+						Visual Designer e Full-Stack Developer. Due mestieri, una persona sola: scegli da quale lato guardarla.
+					</p>
+				</div>
+			</section>
 
-    <!-- CTA CONTATTI — blocco pieno bianco -->
-    <section class="row-block row-light">
-      <div class="row-inner contact-cta-inner">
-        <p style="font-style:italic;opacity:.8;margin-bottom:8px;" data-reveal><em>Cerchi un professionista?</em></p>
-        <h2 style="font-family:var(--ff-head);font-size:clamp(1.6rem,4vw,2.4rem);" data-reveal>Contattami</h2>
-        <div class="row-divider center drip" style="max-width:1180px;"></div>
+		</div>
+	</div>
 
-        <div class="contact-cta-grid" data-reveal>
-          <div>
-            <div class="icon-circle" aria-hidden="true">@</div>
-            <h3>Email</h3>
-            <a href="mailto:cecchelli.marianna@gmail.com">cecchelli.marianna@gmail.com</a>
-          </div>
-          <div>
-            <div class="icon-circle" aria-hidden="true">in</div>
-            <h3>LinkedIn</h3>
-            <a href="#" target="_blank" rel="noopener">Marianna Cecchelli</a>
-          </div>
-        </div>
-      </div>
-    </section>
+	<!-- SERVIZI -->
+	<section class="row-block" id="services">
+		<div class="row-inner">
+			<p class="meta" data-reveal>Cosa faccio</p>
+			<h2 class="section-title" data-reveal>Servizi</h2>
+			<div class="row-divider"></div>
 
-  </main>
+			<p class="services-tools" data-reveal>
+				<b>JavaScript / TypeScript</b> · <b>Python &amp; FastAPI</b> · <b>Node.js &amp; NestJS</b> · <b>REST</b> ·
+				<b>Git &amp; Docker</b> · <b>Figma</b> · <b>Adobe Creative Suite</b>
+			</p>
 
-  <footer class="site-footer">
-    <div class="row-inner">
-      <div class="row-divider" style="opacity:.15;"></div>
-      <p>Portfolio personale di Marianna Cecchelli — contenuti e progetti in aggiornamento.</p>
-      <p style="margin-top:10px;">&copy; <span id="year"></span> Marianna Cecchelli.</p>
-    </div>
-  </footer>
+			<div class="services-grid">
+				<div class="service-block is-dev" data-reveal>
+					<span class="service-tag">Sviluppo</span>
+					<h3>Sviluppo Web Full-Stack</h3>
+					<p data-both="Applicazioni web complete: interfacce responsive e performanti, logica server-side con Python (FastAPI) e Node.js, integrazione REST e workflow Git strutturati."
+						 data-dev="Applicazioni web complete: interfacce responsive e performanti, logica server-side con Python (FastAPI) e Node.js, integrazione REST e workflow Git strutturati. È il lavoro che faccio oggi, in ambito aerospace &amp; defense."
+						 data-design="So cosa costa costruire ciò che disegno: consegno sistemi e file che uno sviluppatore può implementare senza doverli reinventare.">
+						Applicazioni web complete: interfacce responsive e performanti, logica server-side con Python (FastAPI) e Node.js, integrazione REST e workflow Git strutturati.
+					</p>
+				</div>
 
-  <script src="js/script.js"></script>
+				<div class="service-block is-design" data-reveal>
+					<span class="service-tag">Design</span>
+					<h3>Visual &amp; Brand Design</h3>
+					<p data-both="Brand identity complete: logo, sistema tipografico, palette colori, tone of voice e brand guidelines, con Adobe Creative Suite e Figma."
+						 data-design="Brand identity complete: logo, sistema tipografico, palette colori, tone of voice e brand guidelines, con Adobe Creative Suite e Figma. Formazione IED, mostra esposta e riconoscimenti di settore."
+						 data-dev="Il design non è un livello che arriva dopo: componenti, spaziature e stati nascono come sistema, non come patch CSS a fine sprint.">
+						Brand identity complete: logo, sistema tipografico, palette colori, tone of voice e brand guidelines, con Adobe Creative Suite e Figma.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- PROGETTI RECENTI -->
+	<section class="row-block" id="work">
+		<div class="row-inner">
+			<p class="meta" data-reveal>Progetti recenti</p>
+			<h2 class="section-title" data-reveal>Portfolio</h2>
+			<div class="row-divider"></div>
+
+			<div class="work-grid">
+				<article class="work-card" data-lens="dev" data-reveal>
+					<div class="work-media">
+						<img src="assets/img/project-itrad-web.svg" alt="ITRAD — applicazioni web industriali" loading="lazy">
+					</div>
+					<div class="work-body">
+						<div class="work-tags"><span>Web Development</span></div>
+						<h3>ITRAD — Applicazioni web industriali</h3>
+						<p data-both="Sviluppo e manutenzione di applicazioni web in ambiente aerospace &amp; defense, con focus su qualità del codice e scalabilità."
+							 data-dev="Back-end Python/FastAPI, front-end TypeScript, API REST, code review e workflow Git in ambiente aerospace &amp; defense."
+							 data-design="Interfacce per uso industriale: densità di dati alta, gerarchie chiare, stati leggibili anche sotto pressione operativa.">
+							Sviluppo e manutenzione di applicazioni web in ambiente aerospace &amp; defense, con focus su qualità del codice e scalabilità.
+						</p>
+					</div>
+				</article>
+
+				<article class="work-card" data-lens="design" data-reveal>
+					<div class="work-media">
+						<img src="assets/img/project-itrad-brand.svg" alt="ITRAD — rebranding" loading="lazy">
+					</div>
+					<div class="work-body">
+						<div class="work-tags"><span>Brand &amp; Design</span></div>
+						<h3>ITRAD — Rebranding</h3>
+						<p data-both="Rebranding completo della brand identity: logo, sistema tipografico, palette colori e brand guidelines."
+							 data-design="Rebranding completo: logo, sistema tipografico, palette colori, applicazioni e brand guidelines per un'azienda del settore industriale."
+							 data-dev="La stessa identità è poi diventata la base visiva delle interfacce che sviluppo per l'azienda: un sistema unico, non due mondi separati.">
+							Rebranding completo della brand identity: logo, sistema tipografico, palette colori e brand guidelines.
+						</p>
+					</div>
+				</article>
+
+				<article class="work-card" data-lens="design" data-reveal>
+					<div class="work-media">
+						<img src="assets/img/project-edv.svg" alt="EdV — A Garden with a View" loading="lazy">
+					</div>
+					<div class="work-body">
+						<div class="work-tags"><span>WordPress &amp; Strategy</span></div>
+						<h3>EdV — A Garden with a View</h3>
+						<p data-both="Rebranding, sito web e podcast per un brand locale."
+							 data-design="Rebranding e identità per un brand locale, estesa al sito e alla comunicazione del podcast."
+							 data-dev="Sito su WordPress: tema, struttura dei contenuti e messa a terra tecnica della comunicazione del brand.">
+							Rebranding, sito web e podcast per un brand locale.
+						</p>
+					</div>
+				</article>
+			</div>
+
+			<div class="work-more" data-reveal>
+				<a href="portfolio.html" class="btn"
+					 data-both="Vedi tutti i progetti →"
+					 data-design="Vedi tutti i progetti di design →"
+					 data-dev="Vedi tutti i progetti di sviluppo →">Vedi tutti i progetti →</a>
+			</div>
+		</div>
+	</section>
+
+	<!-- CTA CONTATTI -->
+	<section class="row-block" id="contatti-cta">
+		<div class="row-inner">
+			<p class="meta" data-reveal>Parliamone</p>
+			<h2 class="section-title" data-reveal>Contattami</h2>
+			<div class="row-divider"></div>
+
+			<p class="lead" data-reveal
+				 data-both="Firenze, in sede o da remoto. Se il progetto ha bisogno di entrambi i profili, tanto meglio."
+				 data-design="Firenze, in sede o da remoto. Se ti serve un'identità che regga anche una volta messa in produzione, scrivimi."
+				 data-dev="Firenze, in sede o da remoto. Se ti serve chi scrive il codice senza perdere di vista l'interfaccia, scrivimi.">
+				Firenze, in sede o da remoto. Se il progetto ha bisogno di entrambi i profili, tanto meglio.
+			</p>
+
+			<div class="contact-grid" data-reveal style="margin-top:36px;">
+				<div class="contact-item">
+					<p class="meta">Email</p>
+					<a href="mailto:cecchelli.marianna@gmail.com">cecchelli.marianna@gmail.com</a>
+				</div>
+				<div class="contact-item">
+					<p class="meta">LinkedIn</p>
+					<a href="#" target="_blank" rel="noopener">Marianna Cecchelli</a>
+				</div>
+				<div class="contact-item">
+					<p class="meta">GitHub</p>
+					<a href="#" target="_blank" rel="noopener">Marianna Cecchelli</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+</main>
+
+<footer class="site-footer">
+	<div class="row-inner">
+		<p>© <span id="year"></span> Marianna Cecchelli</p>
+		<p>Firenze — contenuti e progetti in aggiornamento</p>
+	</div>
+</footer>
+
+<script src="js/script.js"></script>
 </body>
 </html>

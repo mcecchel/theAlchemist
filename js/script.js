@@ -1,8 +1,18 @@
-// Anno footer
-document.getElementById('year').textContent = new Date().getFullYear();
+/* =============================================================================
+   MARIANNA CECCHELLI — script condiviso
+   A. utilità (anno, reveal)
+   B. DUALITÀ: profilo Designer / Developer (palette, copy, ordine, filtri)
+   C. particelle reattive al mouse  — identiche alla tua versione
+   D. roll 3D della cover           — identico alla tua versione
+   E. filtri portfolio + menu mobile
+   ============================================================================= */
 
-// Reveal on scroll
-const revealEls = document.querySelectorAll('[data-reveal]');
+const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ---------- A. Utilità ---------------------------------------------------- */
+const yearEl = document.getElementById('year');
+if (yearEl) yearEl.textContent = new Date().getFullYear();
+
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
@@ -11,29 +21,100 @@ const revealObserver = new IntersectionObserver((entries) => {
     }
   });
 }, { threshold: 0.15 });
-revealEls.forEach((el) => revealObserver.observe(el));
+document.querySelectorAll('[data-reveal]').forEach((el) => revealObserver.observe(el));
 
-// Filtro progetti
-const filterBtns = document.querySelectorAll('.filter-btn');
-const workCards = document.querySelectorAll('.work-card');
 
-filterBtns.forEach((btn) => {
-  btn.addEventListener('click', () => {
-    filterBtns.forEach((b) => b.classList.remove('is-active'));
-    btn.classList.add('is-active');
+/* =============================================================================
+   B. DUALITÀ — un solo stato ('design' | 'dev' | null), quattro conseguenze:
+      1. la palette si ribalta   (--dom / --sub nel CSS)
+      2. il copy cambia lente     (data-both / data-design / data-dev)
+      3. progetti, servizi e competenze si riordinano (l'altra anima resta visibile)
+      4. il portfolio pre-seleziona il filtro coerente
+   Nessuna scelta = null: il gate d'ingresso (.lens-gate, css) resta in primo
+   piano e nasconde il resto del sito finché non si sceglie design o dev.
+   ============================================================================= */
+const root = document.documentElement;
+const sweep = document.querySelector('.lens-sweep');
+const lensNameEl = document.getElementById('lens-name');
+const LENS_LABEL = { design: 'Designer', dev: 'Developer' };
+const LENS_FILTER = { design: 'brand', dev: 'web' };
 
-    const filter = btn.dataset.filter;
-    workCards.forEach((card) => {
-      const categories = card.dataset.category.split(' ');
-      const show = filter === 'all' || categories.includes(filter);
-      card.classList.toggle('is-hidden', !show);
-    });
+let lens = null;
+
+function readStoredLens() {
+  const fromUrl = new URLSearchParams(location.search).get('lens');
+  if (fromUrl === 'design' || fromUrl === 'dev') return fromUrl;
+  try {
+    const saved = sessionStorage.getItem('mc-lens');
+    if (saved === 'design' || saved === 'dev') return saved;
+  } catch (e) { /* storage non disponibile: nessun problema */ }
+  return null;
+}
+
+function storeLens(value) {
+  try {
+    if (value) sessionStorage.setItem('mc-lens', value);
+    else sessionStorage.removeItem('mc-lens');
+  } catch (e) { /* ignora */ }
+}
+
+/* stesso contenuto, altra angolazione: ogni elemento porta le sue tre versioni */
+function applyCopy() {
+  document.querySelectorAll('[data-both]').forEach((el) => {
+    const text = (lens && el.dataset[lens]) || el.dataset.both;
+    if (text) el.innerHTML = text;
   });
+}
+
+/* il profilo scelto viaggia con te tra le pagine */
+function propagateLens() {
+  document.querySelectorAll('a[href$=".html"]').forEach((a) => {
+    const url = new URL(a.getAttribute('href'), location.href);
+    if (lens) url.searchParams.set('lens', lens);
+    else url.searchParams.delete('lens');
+    a.setAttribute('href', url.pathname.split('/').pop() + url.search);
+  });
+}
+
+function setLens(next, { animate = true } = {}) {
+  lens = next;
+
+  if (lens) root.setAttribute('data-lens', lens);
+  else root.removeAttribute('data-lens');
+
+  storeLens(lens);
+  applyCopy();
+  propagateLens();
+
+  if (lensNameEl && lens) lensNameEl.textContent = LENS_LABEL[lens];
+
+  document.querySelectorAll('[data-set-lens]').forEach((btn) => {
+    if (btn.hasAttribute('aria-pressed')) {
+      btn.setAttribute('aria-pressed', String(btn.dataset.setLens === lens));
+    }
+  });
+
+  applyLensToFilters();
+
+  if (animate && !reducedMotion && sweep) {
+    sweep.classList.remove('is-running');
+    void sweep.offsetWidth; // riavvia l'animazione
+    sweep.classList.add('is-running');
+  }
+}
+
+document.querySelectorAll('[data-set-lens]').forEach((btn) => {
+  btn.addEventListener('click', () => setLens(btn.dataset.setLens));
 });
 
-// Particelle reattive al mouse (canvas nativo, no lib)
+const lensSwap = document.getElementById('lens-swap');
+if (lensSwap) lensSwap.addEventListener('click', () => setLens(lens === 'dev' ? 'design' : 'dev'));
+
+
+/* =============================================================================
+   C. Particelle reattive al mouse (canvas nativo, no lib)
+   ============================================================================= */
 const coverWelcome = document.getElementById('cover-welcome');
-const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 const PARTICLE_COLORS = ['#3c85ff', '#c540b6'];
 
@@ -229,8 +310,15 @@ createParticleField(document.getElementById('hero-particles-canvas'), {
   count: 90,
   withIntro: false,
 });
+createParticleField(document.getElementById('gate-particles-canvas'), {
+  count: 90,
+  withIntro: false,
+});
 
-// Box-roll: il cover particellare ruota in 3D e sfuma, atterrando sulla hero sotto
+
+/* =============================================================================
+   D. Box-roll: il cover particellare ruota in 3D e sfuma, atterrando sulla hero
+   ============================================================================= */
 const rollStage = document.querySelector('.roll-stage');
 const rollCover = document.querySelector('.roll-cover');
 
@@ -248,7 +336,33 @@ if (rollStage && rollCover && !reducedMotion) {
   onRollScroll();
 }
 
-// Menu mobile
+
+/* =============================================================================
+   E. Filtro progetti + menu mobile
+   ============================================================================= */
+const filterBtns = document.querySelectorAll('.filter-btn');
+const workCards = document.querySelectorAll('.work-card');
+
+function applyFilter(filter) {
+  filterBtns.forEach((b) => b.classList.toggle('is-active', b.dataset.filter === filter));
+  workCards.forEach((card) => {
+    const categories = (card.dataset.category || '').split(' ');
+    const show = filter === 'all' || categories.includes(filter);
+    card.classList.toggle('is-hidden', !show);
+  });
+}
+
+filterBtns.forEach((btn) => {
+  btn.addEventListener('click', () => applyFilter(btn.dataset.filter));
+});
+
+/* il portfolio parte dal filtro coerente col profilo scelto — ma "Tutti" è
+   sempre a un click di distanza: l'altra anima non viene mai nascosta d'ufficio */
+function applyLensToFilters() {
+  if (!filterBtns.length) return;
+  applyFilter(lens ? LENS_FILTER[lens] : 'all');
+}
+
 const navToggle = document.querySelector('.nav-toggle');
 const nav = document.querySelector('.nav');
 if (navToggle) {
@@ -263,3 +377,6 @@ if (navToggle) {
     })
   );
 }
+
+/* stato iniziale: profilo ereditato da URL o da sessionStorage, senza sweep */
+setLens(readStoredLens(), { animate: false });

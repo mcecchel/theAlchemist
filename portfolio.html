@@ -4,35 +4,83 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfolio — Marianna Cecchelli</title>
-  <meta name="description" content="Progetti di Marianna Cecchelli: web development, brand design, WordPress e video.">
+  <meta name="description" content="Progetti di Marianna Cecchelli: sviluppo web, brand identity, WordPress &amp; strategy, video.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/fonts.css">
   <link rel="stylesheet" href="css/style.css">
+  <script>
+  (function(){
+    try{
+      var params = new URLSearchParams(location.search);
+      if (params.has('reset')){
+        sessionStorage.removeItem('mc-lens');
+      } else {
+        var l = params.get('lens') || sessionStorage.getItem('mc-lens');
+        if (l === 'design' || l === 'dev') document.documentElement.setAttribute('data-lens', l);
+      }
+    } catch(e){}
+  })();
+  </script>
 </head>
 <body>
 
-
-  <header class="site-header">
-    <a href="index.html" class="logo neon-glitch">M<span class="accent">.</span></a>
-    <nav class="nav" id="site-nav">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="portfolio.html" class="is-current">Portfolio</a>
-      <a href="contatti.html">Contatti</a>
-    </nav>
-    <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false" aria-controls="site-nav">
-      <span></span><span></span><span></span>
+<div class="lens-gate">
+  <canvas id="gate-particles-canvas" class="particles-canvas"></canvas>
+  <p class="hero-eyebrow">Marianna Cecchelli — Firenze</p>
+  <h1>Di cosa hai bisogno?</h1>
+  <div class="lens-picker" role="group" aria-label="Scegli il profilo da cui guardare il portfolio">
+    <button type="button" class="lens-card is-design" data-set-lens="design" aria-pressed="false">
+      <span class="lc-kicker">Profilo 01</span>
+      <h2>Designer</h2>
+      <p>Brand identity, sistemi tipografici, direzione visiva. IED Firenze, 110/110.</p>
+      <p class="lc-stack">Adobe CC · Figma · Brand guidelines</p>
     </button>
-  </header>
+    <button type="button" class="lens-card is-dev" data-set-lens="dev" aria-pressed="false">
+      <span class="lc-kicker">Profilo 02</span>
+      <h2>Developer</h2>
+      <p>Full-stack: front-end, back-end, API. 42 Firenze, oggi in aerospace &amp; defense.</p>
+      <p class="lc-stack">JS/TS · Python · FastAPI · Node · Git</p>
+    </button>
+  </div>
+</div>
 
-  <main>
+<div class="lens-sweep" aria-hidden="true"></div>
 
-    <!-- PORTFOLIO — unico blocco pieno edge-to-edge #a83a3a, come l'originale -->
-    <section class="row-portfolio" style="padding-top:140px;">
+<header class="site-header">
+  <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="Marianna Cecchelli" class="logo-img"></a>
+  <div class="lens-pill">
+    <span>Profilo: <b id="lens-name">—</b></span>
+    <button type="button" id="lens-swap">ribalta</button>
+  </div>
+  <nav class="nav" id="site-nav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="portfolio.html" class="is-current">Portfolio</a>
+    <a href="contatti.html">Contatti</a>
+  </nav>
+  <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false" aria-controls="site-nav">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<main id="top">
+
+  <section class="row-block page-head">
+    <div class="row-inner">
+      <p class="meta" data-reveal>Progetti</p>
+      <h2 class="section-title" data-reveal>Portfolio</h2>
+      <div class="row-divider"></div>
+
+      <p class="lead" data-reveal style="margin-bottom:38px;"
+         data-both="Sviluppo, brand identity, WordPress e video. Il filtro parte da tutto: scegli tu da dove entrare."
+         data-design="Il filtro parte da Brand &amp; Design, perché è il profilo che stai guardando. I progetti di sviluppo restano lì, a un click."
+         data-dev="Il filtro parte da Web Development, perché è il profilo che stai guardando. I progetti di design restano lì, a un click.">
+        Sviluppo, brand identity, WordPress e video. Il filtro parte da tutto: scegli tu da dove entrare.
+      </p>
 
       <div class="work-filters" data-reveal>
-        <svg class="doodle doodle-x doodle-pink" style="top:-30px;left:4vw;transform:rotate(-14deg);" viewBox="0 0 32 32" aria-hidden="true"><path d="M6 6 L26 26 M26 6 L6 26" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" fill="none"/></svg>
         <button class="filter-btn is-active" data-filter="all">Tutti</button>
         <button class="filter-btn" data-filter="web">Web Development</button>
         <button class="filter-btn" data-filter="brand">Brand &amp; Design</button>
@@ -42,105 +90,123 @@
 
       <div class="work-grid">
 
-        <article class="work-card" data-category="web" data-reveal>
-          <div class="work-media">
-            <img src="assets/img/project-placeholder-1.jpg" alt="ITRAD — Applicazioni web industriali" loading="lazy">
-          </div>
+        <article class="work-card" data-category="web" data-lens="dev" data-reveal>
+          <div class="work-media"><img src="assets/img/project-itrad-web.svg" alt="ITRAD — applicazioni web industriali" loading="lazy"></div>
           <div class="work-body">
             <div class="work-tags"><span>Web Development</span></div>
             <h3>ITRAD — Applicazioni web industriali</h3>
-            <p>Sviluppo e manutenzione di applicazioni web in ambiente aerospace &amp; defense: interfacce responsive, flussi HTTP/REST, workflow Git strutturato.</p>
+            <p data-both="Sviluppo e manutenzione di applicazioni web in ambiente aerospace &amp; defense, con focus su qualità del codice e scalabilità."
+               data-dev="Back-end Python/FastAPI, front-end TypeScript, API REST, code review e workflow Git in ambiente aerospace &amp; defense."
+               data-design="Interfacce per uso industriale: densità di dati alta, gerarchie chiare, stati leggibili anche sotto pressione operativa.">
+              Sviluppo e manutenzione di applicazioni web in ambiente aerospace &amp; defense, con focus su qualità del codice e scalabilità.
+            </p>
           </div>
         </article>
 
-        <article class="work-card" data-category="brand" data-reveal>
-          <div class="work-media">
-            <img src="assets/img/project-placeholder-2.jpg" alt="ITRAD — Rebranding" loading="lazy">
-          </div>
+        <article class="work-card" data-category="brand" data-lens="design" data-reveal>
+          <div class="work-media"><img src="assets/img/project-itrad-brand.svg" alt="ITRAD — rebranding" loading="lazy"></div>
           <div class="work-body">
-            <div class="work-tags"><span>Brand Identity</span></div>
+            <div class="work-tags"><span>Brand &amp; Design</span></div>
             <h3>ITRAD — Rebranding</h3>
-            <p>Rebranding completo: logo, sistema tipografico, palette colori, tone of voice e brand guidelines.</p>
+            <p data-both="Rebranding completo: logo, sistema tipografico, palette colori e brand guidelines."
+               data-design="Rebranding completo: logo, sistema tipografico, palette colori, applicazioni e brand guidelines per un'azienda industriale."
+               data-dev="L'identità è poi diventata la base visiva delle interfacce che sviluppo per la stessa azienda: un sistema unico.">
+              Rebranding completo: logo, sistema tipografico, palette colori e brand guidelines.
+            </p>
           </div>
         </article>
 
-        <article class="work-card" data-category="wp brand" data-reveal>
-          <div class="work-media">
-            <img src="assets/img/project-placeholder-3.jpg" alt="EdV — A Garden with a View" loading="lazy">
-          </div>
+        <article class="work-card" data-category="wp brand" data-lens="design" data-reveal>
+          <div class="work-media"><img src="assets/img/project-edv.svg" alt="EdV — A Garden with a View" loading="lazy"></div>
           <div class="work-body">
-            <div class="work-tags"><span>WordPress</span><span>Branding</span><span>Podcast</span></div>
+            <div class="work-tags"><span>WordPress &amp; Strategy</span><span>Brand</span></div>
             <h3>EdV — A Garden with a View</h3>
-            <p>Rebranding, sito WordPress e podcast per un brand locale.</p>
+            <p data-both="Rebranding, sito web e podcast per un brand locale."
+               data-design="Rebranding e identità, estesa al sito e alla comunicazione del podcast."
+               data-dev="Sito su WordPress: tema, struttura dei contenuti e messa a terra tecnica del brand.">
+              Rebranding, sito web e podcast per un brand locale.
+            </p>
           </div>
         </article>
 
-        <article class="work-card" data-category="wp" data-reveal>
-          <div class="work-media">
-            <img src="assets/img/project-placeholder-4.jpg" alt="DiLeonardo" loading="lazy">
-          </div>
+        <article class="work-card" data-category="wp brand" data-lens="design" data-reveal>
+          <div class="work-media"><img src="assets/img/project-dileonardo.svg" alt="DiLeonardo" loading="lazy"></div>
           <div class="work-body">
-            <div class="work-tags"><span>Content Strategy</span><span>E-commerce</span></div>
+            <div class="work-tags"><span>WordPress &amp; Strategy</span></div>
             <h3>DiLeonardo</h3>
-            <p>Content strategy e supporto e-commerce.</p>
+            <p data-both="Presenza digitale e comunicazione per un cliente locale: sito, contenuti e coerenza visiva."
+               data-design="Identità e comunicazione visiva coordinata, dal sito ai materiali."
+               data-dev="Sito WordPress e struttura dei contenuti, con impianto tecnico manutenibile dal cliente.">
+              Presenza digitale e comunicazione per un cliente locale: sito, contenuti e coerenza visiva.
+            </p>
           </div>
         </article>
 
-        <article class="work-card" data-category="wp" data-reveal>
-          <div class="work-media">
-            <img src="assets/img/project-placeholder-5.jpg" alt="Marketing territoriale" loading="lazy">
-          </div>
+        <article class="work-card" data-category="wp brand" data-lens="design" data-reveal>
+          <div class="work-media"><img src="assets/img/project-territorio.svg" alt="Marketing territoriale" loading="lazy"></div>
           <div class="work-body">
-            <div class="work-tags"><span>Digital Strategy</span><span>Community</span></div>
+            <div class="work-tags"><span>WordPress &amp; Strategy</span></div>
             <h3>Marketing territoriale</h3>
-            <p>Community management per progetti di marketing territoriale.</p>
+            <p data-both="Progetti di promozione del territorio: strategia digitale, contenuti e identità visiva."
+               data-design="Sistema visivo e contenuti per raccontare un territorio senza cadere nel folklore."
+               data-dev="Impianto web e gestione dei contenuti per campagne di promozione territoriale.">
+              Progetti di promozione del territorio: strategia digitale, contenuti e identità visiva.
+            </p>
           </div>
         </article>
 
-        <article class="work-card" data-category="brand" data-reveal>
-          <div class="work-media">
-            <img src="assets/img/project-placeholder-6.jpg" alt="D-I-S-T-A-N-Z-I-A-M-E-N-T-O" loading="lazy">
-          </div>
+        <article class="work-card" data-category="brand" data-lens="design" data-reveal>
+          <div class="work-media"><img src="assets/img/project-distanziamento.svg" alt="Mostra D-I-S-T-A-N-Z-I-A-M-E-N-T-O" loading="lazy"></div>
           <div class="work-body">
-            <div class="work-tags"><span>Design</span><span>Mostra</span></div>
+            <div class="work-tags"><span>Brand &amp; Design</span><span>Mostra</span></div>
             <h3>D-I-S-T-A-N-Z-I-A-M-E-N-T-O</h3>
-            <p>Progetto esposto in mostra nella sede di IED Firenze e pubblicato sulla rivista artistica FrizziFrizzi.</p>
+            <p data-both="Progetto espositivo presentato a IED Firenze e pubblicato su FrizziFrizzi."
+               data-design="Progetto espositivo: ricerca visiva sul distanziamento, esposto a IED Firenze e pubblicato su FrizziFrizzi."
+               data-dev="Progetto espositivo esposto a IED Firenze e pubblicato su FrizziFrizzi — ricerca visiva, fuori dal browser.">
+              Progetto espositivo presentato a IED Firenze e pubblicato su FrizziFrizzi.
+            </p>
           </div>
         </article>
 
-        <article class="work-card" data-category="video" data-reveal>
-          <div class="work-media">
-            <img src="assets/img/project-placeholder-7.jpg" alt="Spot School Award 2023" loading="lazy">
-          </div>
+        <article class="work-card" data-category="video brand" data-lens="design" data-reveal>
+          <div class="work-media"><img src="assets/img/project-spot.svg" alt="Spot School Award 2023" loading="lazy"></div>
           <div class="work-body">
-            <div class="work-tags"><span>Video</span><span>Concorso</span></div>
+            <div class="work-tags"><span>Video</span></div>
             <h3>Spot School Award 2023</h3>
-            <p>Due volte nella Short List Nazionale, Sezione TV — concorso tra scuole d'Italia.</p>
+            <p data-both="Short List Nazionale, sezione TV."
+               data-design="Short List Nazionale, sezione TV: concept, direzione visiva e realizzazione."
+               data-dev="Short List Nazionale, sezione TV — progetto video.">
+              Short List Nazionale, sezione TV.
+            </p>
           </div>
         </article>
 
-        <article class="work-card" data-category="video" data-reveal>
-          <div class="work-media">
-            <img src="assets/img/project-placeholder-8.jpg" alt="ACF Fiorentina — Il video di Lorenzo 26" loading="lazy">
-          </div>
+        <article class="work-card" data-category="video" data-lens="design" data-reveal>
+          <div class="work-media"><img src="assets/img/project-fiorentina.svg" alt="Il video di Lorenzo 26 — ACF Fiorentina" loading="lazy"></div>
           <div class="work-body">
-            <div class="work-tags"><span>Video</span><span>Concorso</span></div>
+            <div class="work-tags"><span>Video</span></div>
             <h3>ACF Fiorentina — Il video di Lorenzo 26</h3>
-            <p>2° posto nella realizzazione di un video promozionale per la mascotte viola.</p>
+            <p data-both="Secondo posto al contest video."
+               data-design="Secondo posto: montaggio, ritmo e racconto visivo."
+               data-dev="Secondo posto al contest video.">
+              Secondo posto al contest video.
+            </p>
           </div>
         </article>
 
       </div>
-    </section>
-
-  </main>
-
-  <footer class="site-footer">
-    <div class="row-inner">
-      <p>&copy; <span id="year"></span> Marianna Cecchelli.</p>
     </div>
-  </footer>
+  </section>
 
-  <script src="js/script.js"></script>
+</main>
+
+<footer class="site-footer">
+  <div class="row-inner">
+    <p>© <span id="year"></span> Marianna Cecchelli</p>
+    <p>Firenze — contenuti e progetti in aggiornamento</p>
+  </div>
+</footer>
+
+<script src="js/script.js"></script>
 </body>
 </html>
