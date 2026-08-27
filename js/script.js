@@ -33,6 +33,7 @@ const LENS_LABEL = { design: 'Designer', dev: 'Developer' };
 const LENS_FILTER = { design: 'brand', dev: 'web' };
 
 let lens = null;
+let refreshCoverParticles = () => {};
 
 function readStoredLens() {
 	// L'URL ha priorità sul valore salvato, così un link con ?lens= può forzare il profilo.
@@ -79,6 +80,7 @@ function setLens(next, { animate = true } = {}) {
 	// L'attributo sull'elemento html attiva le variabili e le regole CSS del profilo.
 	if (lens) root.setAttribute('data-lens', lens);
 	else root.removeAttribute('data-lens');
+	refreshCoverParticles();
 
 	storeLens(lens);
 	applyCopy();
@@ -170,6 +172,12 @@ function createParticleField(canvas, { count, withIntro = false, coverEl = null 
 	function resize() {
 		w = canvas.width = canvas.offsetWidth;
 		h = canvas.height = canvas.offsetHeight;
+	}
+
+	function refresh() {
+		const wasHidden = !w || !h;
+		resize();
+		if (wasHidden && w && h) makeParticles();
 	}
 
 	function makeParticles() {
@@ -298,9 +306,11 @@ function createParticleField(canvas, { count, withIntro = false, coverEl = null 
 	resize();
 	makeParticles();
 	requestAnimationFrame(step);
+	return refresh;
 }
 
-createParticleField(document.getElementById('particles-canvas'), {
+
+refreshCoverParticles = createParticleField(document.getElementById('particles-canvas'), {
 	count: 260,
 	withIntro: true,
 	coverEl: coverWelcome,
