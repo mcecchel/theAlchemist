@@ -5,10 +5,16 @@ Sito statico, 4 pagine. Nessuna build, nessuna dipendenza da installare.
 ## Struttura
 
 ```
-index.html          Home: cover particellare -> roll 3D -> hero + selettore duale, servizi, progetti, CTA
-about.html          Profilo, formazione, competenze (raggruppate per profilo), esperienze
-portfolio.html      Griglia progetti filtrabile (Web / Brand & Design / WordPress & Strategy / Video)
-contatti.html       Contatti e disponibilità
+index.html, about.html, portfolio.html, contatti.html  — pagine generate da template
+														(NON modificare direttamente)
+
+templates/
+  base.html                 Layout comune a tutte le pagine
+  {index,about,portfolio,contatti}_content.html  — contenuto unico di ogni pagina
+  
+generate_pages.py           Script che genera le pagine HTML da template + metadati
+							⚠ Esegui questo dopo OGNI modifica al contenuto o metadati
+build_standalone.py         Inlinea CSS/JS/font/img per preview offline
 
 css/style.css       Tutto lo stile. La dualità vive qui: --dom / --sub
 css/fonts.css       Urban Spray (font incorporato in base64)
@@ -18,14 +24,36 @@ assets/fonts/       Il .ttf originale di Urban Spray
 assets/img/         PLACEHOLDER SVG — da sostituire con le immagini vere
 
 anteprima-singolo-file/   Le stesse 4 pagine, ma con CSS/JS/font/immagini inline:
-                          si aprono con doppio click ovunque, utili per mostrare il sito al volo
-build_standalone.py       Rigenera la cartella qui sopra dopo ogni modifica ai sorgenti
+						  si aprono con doppio click ovunque, utili per mostrare il sito al volo
 ```
 
 ## Come si guarda
 
 - Doppio click su `index.html` (funziona da file://, purché le cartelle restino accanto)
 - Oppure, meglio, un server locale: `python3 -m http.server 8000`
+
+## Come mantenere il sito (modifica pagine)
+
+**Non modificare mai direttamente i file `.html`** — verranno riscritti.
+
+Per apportare modifiche:
+
+1. **Modifica il contenuto** in `templates/{pagina}_content.html` (es. `templates/about_content.html`)
+2. **Aggiorna metadati** (titolo, descrizione) in `generate_pages.py` se necessario
+3. **Rigenerai le pagine**:
+   ```bash
+   python3 generate_pages.py
+   ```
+4. **Verifica e test** nel browser
+5. **Rigenera i file standalone** (opzionale, per preview offline):
+   ```bash
+   python3 build_standalone.py
+   ```
+
+Esempio: aggiungi un nuovo progetto a portfolio
+1. Modifica `templates/portfolio_content.html` (aggiungi `<article class="work-card">…</article>`)
+2. Esegui `python3 generate_pages.py`
+3. Verifica in `portfolio.html`
 
 ## La dualità (come funziona davvero)
 

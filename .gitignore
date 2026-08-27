@@ -1,0 +1,11 @@
+# Cartella con preview offline (generata da build_standalone.py)
+anteprima-singolo-file/
+
+# Cache Python
+__pycache__/
+*.pyc
+*.pyo
+
+# OS
+.DS_Store
+Thumbs.db
